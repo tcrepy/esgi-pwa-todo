@@ -9,7 +9,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "polymer-cli": "^1.9.8"
+    "polymer-cli": "^1.9.8",
+    "serve": "^11.0.0"
   },
   "dependencies": {
     "idb": "^4.0.3",

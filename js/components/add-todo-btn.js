@@ -37,6 +37,10 @@ export default class AddTodoBtn extends LitElement {
                 justify-content: center;
             }
             
+            .container label {
+                color: #fafafa;
+            }
+            
             .uppercase {
                 text-transform: uppercase;
             }
@@ -57,7 +61,7 @@ export default class AddTodoBtn extends LitElement {
                 color: #fff;
                 box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
                 border-radius: 2px;
-                padding: 1vh 2vh;
+                padding: 10px 20px;
             }
             .btn--primary:hover {
                 background: #6c7ff2;
@@ -118,7 +122,8 @@ export default class AddTodoBtn extends LitElement {
         return html`
             <div class="container">
                 <div class="container__item">
-                    <input type="text" class="form__field" placeholder="${this.placeholder}" />
+                    <label for="input-new-todo">New Todo</label>
+                    <input type="text" class="form__field" placeholder="${this.placeholder}" id="input-new-todo"/>
                     <button class="btn btn--primary btn--inside uppercase">${this.title}</button>
                 </div>
             </div>
