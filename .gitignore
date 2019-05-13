@@ -1,2 +1,4 @@
 .idea
 node_modules/*
+service-worker.js
+workbox-v4.3.1

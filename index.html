@@ -10,11 +10,11 @@
     <!--...-->
     <script>
         if ('serviceWorker' in navigator) {
-            // window.addEventListener('load', function () {
-            //     navigator.serviceWorker.register("/service-worker.js", {
-            //         scope: '/'
-            //     });
-            // })
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register("/service-worker.js", {
+                    scope: '/'
+                });
+            })
         } else {
             console.log('Use another cache method :(');
         }

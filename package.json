@@ -4,13 +4,15 @@
   "description": "",
   "main": "js/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate": "workbox generateSW workbox-config.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "polymer-cli": "^1.9.8",
-    "serve": "^11.0.0"
+    "serve": "^11.0.0",
+    "workbox-cli": "^4.3.1"
   },
   "dependencies": {
     "idb": "^4.0.3",
