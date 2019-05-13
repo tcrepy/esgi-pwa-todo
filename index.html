@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TODO-list</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Inline your critical styles */
+        html, body {
+            /* Define app variables */
+            --app-bg-color: #fafafa;
+            --app-text-color: #313131;
+            --app-card-color: #ffffff;
+            --app-grey-color: #E2E2E2;
+            --app-header-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28);
+
+            min-height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: var(--app-bg-color);
+            font-size: 16px;
+            font-family: sans-serif;
+            color: var(--app-text-color);
+        }
+
+        #app {
+            height: 100%;
+        }
+
+        #app > header {
+            position: relative;
+            background-color: var(--app-card-color);
+            padding: 0 16px;
+            box-shadow: var(--app-header-shadow);
+            z-index: 1;
+        }
+
+        #app > header > h1 {
+            margin: 0;
+            padding: 1vh;
+        }
+
+        #app > header nav {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 48px;
+            font-size: 1.25rem;
+        }
+
+        #app > main > [active] {
+            display: block;
+        }
+
+        #app > main > * {
+            display: none;
+        }
+
+        /* Skeleton */
+        .skeleton {
+            position: relative;
+            margin: 1rem;
+        }
+
+        .skeleton .element {
+            margin-bottom: 40px;
+        }
+
+        .skeleton .element .title {
+            min-height: 30px;
+            background: var(--app-grey-color);
+            margin-bottom: 1rem;
+            border-radius: 5px;
+            max-width: 80%;
+        }
+
+        .skeleton .element .description {
+            min-height: 50px;
+            background: var(--app-grey-color);
+            margin-bottom: 1rem;
+        }
+
+        .skeleton::after {
+            display: block;
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            transform: translateX(-100%);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .3), transparent);
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        section[page=list] {
+            padding: 1vh;
+        }
+    </style>
+</head>
+<body>
+<section id="app">
+    <header>
+        <h1>TODO List</h1>
+    </header>
+    <main>
+        <div class="skeleton" active>
+            <div class="element">
+                <div class="title"></div>
+                <div class="description"></div>
+            </div>
+            <div class="element">
+                <div class="title"></div>
+                <div class="description"></div>
+            </div>
+        </div>
+        <section page="list">
+            <add-todo-btn title="Ajouter un todo" placeholder="Qu'est-ce que vous avez à faire ?"></add-todo-btn>
+            <todo-elem title="Test" ></todo-elem>
+        </section>
+    </main>
+</section>
+<check-connexion message="No connexion"></check-connexion>
+<script type="module" src="js/app.js"></script>
+<script type="module" src="node_modules/wcomponent-check-connexion/connexion.js"></script>
+<script type="module" src="js/components/add-todo-btn.js" async></script>
+<script type="module" src="js/components/todo-element.js" async></script>
+
+
+</body>
+</html>
