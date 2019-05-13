@@ -5,11 +5,13 @@ export default class TodoElement extends LitElement {
         super();
         this.title = "";
         this.active = false;
+        this.id = 0;
     }
 
-    init(title, active) {
+    init(title, active, id) {
         this.title = title;
         this.active = active;
+        this.id = id;
     }
 
     static get properties() {
@@ -27,10 +29,24 @@ export default class TodoElement extends LitElement {
         `
     }
 
+    clickTask() {
+        this.active = !this.active;
+    }
+
+    firstUpdated(_changeProperty) {
+        this.shadowRoot.querySelector('.todo-elem').addEventListener('click', e => {
+            this.clickTask();
+            let event = new CustomEvent('check-task', {
+                detail: this
+            });
+            document.dispatchEvent(event);
+        })
+    }
+
     render() {
         let classInactive = !this.active ? 'inactive' : '';
         return html`
-            <div class="todo-elem">
+            <div class="todo-elem" data-id="${this.id}">
                 <p class="content ${classInactive}">${this.title}</p>
             </div>
         `
