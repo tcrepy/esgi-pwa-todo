@@ -22,7 +22,6 @@ import TodoElement from "./components/todo-element";
         if (typeof allTodo === 'undefined') {
             allTodo = [];
         }
-        console.log(allTodo);
 
         //creation des todoelement dans le dom
         allTodo.map(elem => {
