@@ -23,6 +23,32 @@ export default class TodoElement extends LitElement {
 
     static get styles() {
         return css`
+            .todo-elem {
+                padding: 15px;
+                border-bottom: 1px solid #ababab;
+                display: flex;
+                align-items: center;
+                width: 100%;
+                box-sizing: border-box;
+                flex-direction: row;
+                justify-content: center;
+            }
+            
+            .todo-elem div {
+                display: inline-block;
+            }  
+            
+            .todo-elem > .content {
+                width: 85%;
+                word-break: break-all;
+            }
+            
+            .todo-elem .delete-elem {
+                font-weight: bolder;
+                float: right;
+                margin: 0 15px;
+            }
+            
             .inactive {
                 text-decoration: line-through;
             }
@@ -34,7 +60,7 @@ export default class TodoElement extends LitElement {
     }
 
     firstUpdated(_changeProperty) {
-        this.shadowRoot.querySelector('.todo-elem').addEventListener('click', e => {
+        this.shadowRoot.querySelector('.todo-elem > .delete-elem').addEventListener('click', e => {
             this.clickTask();
             let event = new CustomEvent('check-task', {
                 detail: this
@@ -45,9 +71,10 @@ export default class TodoElement extends LitElement {
 
     render() {
         let classInactive = !this.active ? 'inactive' : '';
+        let symbol = !this.active ? '✖' : '✔';
         return html`
             <div class="todo-elem" data-id="${this.id}">
-                <p class="content ${classInactive}">${this.title}</p>
+                <div class="content ${classInactive}">${this.title}</div><span class="delete-elem">${symbol}</span>
             </div>
         `
     }

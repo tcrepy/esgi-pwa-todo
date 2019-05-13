@@ -57,7 +57,7 @@ export default class AddTodoBtn extends LitElement {
                 color: #fff;
                 box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
                 border-radius: 2px;
-                padding: 1vh;
+                padding: 1vh 2vh;
             }
             .btn--primary:hover {
                 background: #6c7ff2;
@@ -68,6 +68,13 @@ export default class AddTodoBtn extends LitElement {
             }
             .btn--inside {
                 margin-left: -96px;
+            }
+            
+            @media screen and (max-width: 490px) {
+            
+                .btn--inside {
+                    margin: 10px 0;
+                }
             }
             
             .form__field {
