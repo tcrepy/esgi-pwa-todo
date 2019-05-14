@@ -11,7 +11,7 @@ import Db from "./components/database/db";
     const list = document.querySelector('.list');
 
     //récupération des todo-elements
-    const database = await new Db();
+    const database = await new Db("http://localhost:8888/");
     await database.init();
 
     let allTodo = await database.getTodos();

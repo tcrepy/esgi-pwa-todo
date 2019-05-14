@@ -1,9 +1,9 @@
 import {openDB} from "idb";
 
 export default class Db {
-    constructor() {
+    constructor(api_uri) {
         this.local_database = {};
-        this.api_uri = "http://localhost:8888/";
+        this.api_uri = api_uri;
         this.api_uri_todos = this.api_uri + "todos/";
         this.isOnline = navigator.onLine;
         document.addEventListener('connexion-changed', e => {
@@ -34,24 +34,18 @@ export default class Db {
     }
 
     async getTodos() {
-        let alltodos;
         if (this.isOnline) {
-            alltodos = fetch(this.api_uri_todos)
+            await fetch(this.api_uri_todos)
                 .then(async data => {
                     const json = await data.json();
                     if (this.isOnline) {
                         this.local_database.put('todo', json, 'todo');
                     }
-                    let alltodos = await this.local_database.get('todo', 'todo');
-                    return alltodos;
                 }).catch(async err => {
                     console.log(err);
-                    let alltodos = await this.local_database.get('todo', 'todo');
-                    return alltodos;
                 });
-        } else {
-            alltodos = await this.local_database.get('todo', 'todo');
         }
+        let alltodos = await this.local_database.get('todo', 'todo');
         if (typeof alltodos === 'undefined') {
             alltodos = [];
         }
