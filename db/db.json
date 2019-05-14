@@ -1,29 +1,5 @@
 {
   "todos": [
-    {
-      "title": "test",
-      "active": false,
-      "id": 1
-    },
-    {
-      "title": "test",
-      "active": true,
-      "id": 2
-    },
-    {
-      "title": "test",
-      "active": false,
-      "id": 3
-    },
-    {
-      "title": "test",
-      "active": true,
-      "id": 4
-    },
-    {
-      "title": "pzojfe",
-      "active": true,
-      "id": 5
-    }
+
   ]
 }

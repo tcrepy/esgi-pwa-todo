@@ -34,7 +34,7 @@ export default class Db {
     }
 
     async getTodos() {
-        let alltodos = [];
+        let alltodos;
         if (this.isOnline) {
             alltodos = fetch(this.api_uri_todos)
                 .then(async data => {
@@ -51,6 +51,9 @@ export default class Db {
                 });
         } else {
             alltodos = await this.local_database.get('todo', 'todo');
+        }
+        if (typeof alltodos === 'undefined') {
+            alltodos = [];
         }
         return alltodos;
     }
@@ -99,6 +102,9 @@ export default class Db {
             active: true
         };
         let allTodo = await this.local_database.get('todo', 'todo');
+        if (typeof allTodo === "undefined") {
+            allTodo = [];
+        }
         newTodo.id = allTodo.length + 1;
         if (this.isOnline) {
             //update api
