@@ -6,6 +6,10 @@ export default class WcTodoElement extends LitElement {
         this.title = "";
         this.active = false;
         this.id = 0;
+        this.isOnline = navigator.onLine;
+        document.addEventListener('connexion-changed', ({detail}) => {
+            this.isOnline = detail;
+        })
     }
 
     init(title, active, id) {
@@ -56,7 +60,9 @@ export default class WcTodoElement extends LitElement {
     }
 
     clickTask() {
-        this.active = !this.active;
+        if (this.isOnline) {
+            this.active = !this.active;
+        }
     }
 
     firstUpdated(_changeProperty) {
@@ -65,7 +71,9 @@ export default class WcTodoElement extends LitElement {
             let event = new CustomEvent('check-task', {
                 detail: this
             });
-            document.dispatchEvent(event);
+            if (this.isOnline) {
+                document.dispatchEvent(event);
+            }
         })
     }
 

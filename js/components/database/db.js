@@ -6,22 +6,26 @@ export default class Db {
         this.api_uri = api_uri;
         this.api_uri_todos = this.api_uri + "todos/";
         this.isOnline = navigator.onLine;
-        document.addEventListener('connexion-changed', e => {
-            this.isOnline = e.detail;
+        document.addEventListener('connexion-changed', async ({detail}) => {
+            this.isOnline = detail;
             if (this.isOnline && this.queue.length > 0) {
-                this.queue.map(async qElem => {
-                    await fetch(qElem.uri, {
-                        method: qElem.method,
-                        headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(qElem.todo)
-                    });
-                })
+                await this.syncDb();
             }
         });
         this.queue = [];
+    }
+
+    async syncDb() {
+        this.queue.map(async qElem => {
+            await fetch(qElem.uri, {
+                method: qElem.method,
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(qElem.todo)
+            })
+        })
     }
 
     async init() {
