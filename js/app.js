@@ -15,13 +15,9 @@ import Db from "./components/database/db";
     await database.init();
 
     let allTodo = await database.getTodos();
-
     //creation des todoelement dans le dom
-    allTodo.map(elem => {
-        let todoElement = new WcTodoElement();
-        todoElement.init(elem.title, elem.active, elem.id);
-        list.appendChild(todoElement);
-        return todoElement;
+    allTodo.map(todo => {
+        createTodoElem(todo, list)
     });
 
     document.addEventListener('check-task', e => {
@@ -33,10 +29,7 @@ import Db from "./components/database/db";
         database.createTodo(e.detail)
             .then(todo => {
                 //création de l'element dans le dom
-                let todoElement = new WcTodoElement();
-                todoElement.init(todo.title, true, todo.id);
-                list.appendChild(todoElement);
-                return todoElement;
+                createTodoElem(todo, list)
             })
     });
 
@@ -48,4 +41,11 @@ import Db from "./components/database/db";
 async function clearDb(database, list) {
     database.clearDb();
     list.innerHTML = '';
+}
+
+function createTodoElem(todo, list) {
+    let todoElement = new WcTodoElement();
+    todoElement.init(todo.title, todo.active, todo.id);
+    list.appendChild(todoElement);
+    return todoElement;
 }

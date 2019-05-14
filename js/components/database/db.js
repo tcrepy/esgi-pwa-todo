@@ -9,8 +9,8 @@ export default class Db {
         document.addEventListener('connexion-changed', e => {
             this.isOnline = e.detail;
             if (this.isOnline && this.queue.length > 0) {
-                this.queue.map(qElem => {
-                    fetch(qElem.uri, {
+                this.queue.map(async qElem => {
+                    await fetch(qElem.uri, {
                         method: qElem.method,
                         headers: {
                             'Accept': 'application/json',
@@ -34,18 +34,19 @@ export default class Db {
     }
 
     async getTodos() {
+        let alltodos;
         if (this.isOnline) {
-            fetch(this.api_uri_todos)
+            alltodos = await fetch(this.api_uri_todos)
                 .then(async data => {
                     const json = await data.json();
                     if (this.isOnline) {
-                        this.local_database.put('todo', json, 'todo');
+                        await this.local_database.put('todo', json, 'todo');
                     }
                 }).catch(async err => {
                     console.log(err);
                 });
         }
-        let alltodos = await this.local_database.get('todo', 'todo');
+        alltodos = await this.local_database.get('todo', 'todo');
         if (typeof alltodos === 'undefined') {
             alltodos = [];
         }
@@ -91,15 +92,15 @@ export default class Db {
     }
 
     async createTodo(title) {
-        let newTodo = {
-            title: title,
-            active: true
-        };
         let allTodo = await this.local_database.get('todo', 'todo');
         if (typeof allTodo === "undefined") {
             allTodo = [];
         }
-        newTodo.id = allTodo.length + 1;
+        let newTodo = {
+            title: title,
+            active: true,
+            id: allTodo.length + 1
+        };
         if (this.isOnline) {
             //update api
             fetch(this.api_uri_todos, {
