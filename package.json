@@ -4,7 +4,7 @@
   "description": "",
   "main": "js/app.js",
   "scripts": {
-    "test": "npm i && workbox generateSW workbox-config.js && json-server --watch db/db.json --port 8888",
+    "build": "npm i && workbox generateSW workbox-config.js && json-server --watch db/db.json --port 8888",
     "serve": "polymer serve",
     "generate": "workbox generateSW workbox-config.js"
   },
