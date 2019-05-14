@@ -74,10 +74,14 @@ export default class AddTodoBtn extends LitElement {
                 margin-left: -96px;
             }
             
-            @media screen and (max-width: 490px) {
-            
+            @media screen and (max-width: 590px) {
+                .form__field {
+                    width: 100% !important;
+                    box-sizing: border-box;
+                }
                 .btn--inside {
                     margin: 10px 0;
+                    width: 100%;
                 }
             }
             
