@@ -28,14 +28,15 @@ html, body {
 #app > header {
     position: relative;
     background-color: var(--app-card-color);
-    padding: 0 16px;
+    padding: 0 6px;
     box-shadow: var(--app-header-shadow);
     z-index: 1;
 }
 
-#app > header > h1 {
+#app > header h1 {
     margin: 0;
     padding: 1vh;
+    font-size: 1.25rem;
 }
 
 #app > header nav {
@@ -44,7 +45,7 @@ html, body {
     justify-content: space-between;
     align-items: center;
     height: 48px;
-    font-size: 1.25rem;
+    padding: 15px 0;
 }
 
 #app > main > [active] {
@@ -99,4 +100,24 @@ html, body {
 
 section[page=list] {
     padding: 1vh;
+}
+
+.btn {
+    display: inline-block;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    border: 0;
+    outline: 0;
+    padding: 0;
+    transition: all 200ms ease-in;
+    cursor: pointer;
+}
+
+.btn--primary {
+    background: #7f8ff4;
+    color: #fff;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    padding: 10px 20px;
 }

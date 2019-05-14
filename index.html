@@ -11,11 +11,11 @@
     <!--...-->
     <script>
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function () {
-                navigator.serviceWorker.register("/sw.js", {
-                    scope: '/'
-                });
-            })
+            // window.addEventListener('load', function () {
+            //     navigator.serviceWorker.register("/sw.js", {
+            //         scope: '/'
+            //     });
+            // })
         } else {
             console.log('Use another cache method :(');
         }
@@ -26,7 +26,9 @@
 <body>
 <section id="app">
     <header>
-        <h1>TODO List</h1>
+        <nav> <h1>TODO List</h1>
+            <button id="clear-db" class="btn btn--primary">Clear</button>
+        </nav>
     </header>
     <main>
         <div class="skeleton" active>
@@ -41,6 +43,7 @@
         </div>
         <section page="list">
             <add-todo-btn title="Ajouter un todo" placeholder="Qu'est-ce que vous avez à faire ?"></add-todo-btn>
+            <div class="list"></div>
         </section>
     </main>
 </section>

@@ -9,6 +9,7 @@ import TodoElement from "./components/todo-element";
     const listPage = app.querySelector('[page=list]');
     skeleton.removeAttribute('active');
     listPage.setAttribute('active', '');
+    const list = document.querySelector('.list');
 
     //récupération des todo-elements
     try {
@@ -27,7 +28,7 @@ import TodoElement from "./components/todo-element";
         allTodo.map(elem => {
             let todoElement = new TodoElement();
             todoElement.init(elem.title, elem.active, elem.id);
-            listPage.appendChild(todoElement);
+            list.appendChild(todoElement);
             return todoElement;
         });
         document.addEventListener('check-task', e => {
@@ -49,10 +50,20 @@ import TodoElement from "./components/todo-element";
             //création de l'element dans le dom
             let todoElement = new TodoElement();
             todoElement.init(e.detail, true, id);
-            listPage.appendChild(todoElement);
+            list.appendChild(todoElement);
             return todoElement;
         });
+
+        document.getElementById('clear-db').addEventListener('click', e => {
+            clearDb(database, list);
+        });
+
     } catch (e) {
         console.log(e);
     }
 })(document);
+
+async function clearDb(database, list) {
+    await database.delete('todo', 'todo');
+    list.innerHTML = '';
+}
