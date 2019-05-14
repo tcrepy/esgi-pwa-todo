@@ -15,7 +15,12 @@ module.exports = {
         }
     }],
     "globPatterns": [
-        "**/*.{json,jpg,html,js,css}"
+        "**/*.{json,jpg,html,js,css}",
+        "./node_modules/wcomponent-check-connexion/*",
+        "./node_modules/idb/build/esm/index.js",
+        "./node_modules/idb/build/esm/chunk.js",
+        "./node_modules/lit-element/**/*.js",
+        "./node_modules/lit-html/**/*.js",
     ],
     "swDest": "sw.js"
 };

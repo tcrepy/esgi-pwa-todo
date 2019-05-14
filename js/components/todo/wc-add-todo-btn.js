@@ -1,6 +1,6 @@
-import {css, html, LitElement} from "lit-element";
+import {css, html, LitElement} from "lit-element/lit-element";
 
-export default class AddTodoBtn extends LitElement {
+export default class WcAddTodoBtn extends LitElement {
     constructor() {
         super();
         this.title = "";
@@ -135,4 +135,4 @@ export default class AddTodoBtn extends LitElement {
     }
 }
 
-customElements.define('add-todo-btn', AddTodoBtn);
+customElements.define('add-todo-btn', WcAddTodoBtn);

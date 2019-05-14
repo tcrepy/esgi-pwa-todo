@@ -1,6 +1,6 @@
-import {css, html, LitElement} from "lit-element";
+import {css, html, LitElement} from "lit-element/lit-element";
 
-export default class TodoElement extends LitElement {
+export default class WcTodoElement extends LitElement {
     constructor() {
         super();
         this.title = "";
@@ -80,4 +80,4 @@ export default class TodoElement extends LitElement {
     }
 }
 
-customElements.define('todo-elem', TodoElement);
+customElements.define('todo-elem', WcTodoElement);
