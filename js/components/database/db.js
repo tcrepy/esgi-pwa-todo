@@ -35,7 +35,7 @@ export default class Db {
 
     async getTodos() {
         if (this.isOnline) {
-            await fetch(this.api_uri_todos)
+            fetch(this.api_uri_todos)
                 .then(async data => {
                     const json = await data.json();
                     if (this.isOnline) {

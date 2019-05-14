@@ -40,8 +40,8 @@ import Db from "./components/database/db";
             })
     });
 
-    document.getElementById('clear-db').addEventListener('click', e => {
-        clearDb(database, list);
+    document.getElementById('clear-db').addEventListener('click', async e => {
+        await clearDb(database, list);
     });
 })(document);
 
