@@ -9,8 +9,8 @@ export default class Db {
         document.addEventListener('connexion-changed', e => {
             this.isOnline = e.detail;
             if (this.isOnline && this.queue.length > 0) {
-                this.queue.map(async qElem => {
-                    await fetch(qElem.uri, {
+                this.queue.map(qElem => {
+                    fetch(qElem.uri, {
                         method: qElem.method,
                         headers: {
                             'Accept': 'application/json',
