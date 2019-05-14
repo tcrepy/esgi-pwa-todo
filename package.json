@@ -6,7 +6,8 @@
   "scripts": {
     "build": "npm i && workbox generateSW workbox-config.js && json-server --watch db/db.json --port 8888",
     "serve": "polymer serve",
-    "generate": "workbox generateSW workbox-config.js"
+    "generate": "workbox generateSW workbox-config.js",
+    "api": "json-server --watch db/db.json --port 8888"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +21,6 @@
   "dependencies": {
     "idb": "^4.0.3",
     "lit-element": "^2.1.0",
-    "wcomponent-check-connexion": "^0.1.1"
+    "wcomponent-check-connexion": "^0.1.3"
   }
 }
